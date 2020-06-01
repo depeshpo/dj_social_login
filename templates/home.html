@@ -1,0 +1,16 @@
+{% load socialaccount %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+<h1>Django Login </h1>
+{% if user.is_authenticated %}
+    <p>Welcome {{ user.username }} !!!</p>
+    <p><a href="{% url 'account_logout' %}">Log out</a>
+        {% else %}
+    <p><a href="{% url 'account_signup' %}">Sign Up</a></p>
+    <p><a href="{% url 'account_login' %}">Log In </a></p>
+    <p><a href="{% provider_login_url 'google' %}">Log In with Gmail</a></p>
+    <p><a href="{% provider_login_url 'facebook' method="js_sdk" %}">Login with Facebook</a></p>
+    <p><a href="{% provider_login_url 'github' %}">Login with Github</a></p>
+
+{% endif %}
